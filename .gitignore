@@ -1,0 +1,9 @@
+/Астрология
+/Саморазвитие
+
+# Ангуляр
+/dist
+/.angular
+
+# Зависимости node_modules
+/node_modules

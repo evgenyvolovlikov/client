@@ -1,0 +1,10 @@
+# Angular служебный настройки
+/dist
+/.angular
+
+# Зависимости и пакетные менеджеры
+/node_modules
+pnpm-lock.yaml
+
+# Логи и кеш
+.log
