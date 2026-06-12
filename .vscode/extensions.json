@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "angular.ng-template",
+        "esbenp.prettier-vscode",
+        "editorconfig.editorconfig",
+        "dbaeumer.vscode-eslint",
+        "stylelint.vscode-stylelint",
+        "pkief.material-icon-theme"
+    ]
+}

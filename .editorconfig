@@ -1,0 +1,19 @@
+# Искать настройки выше этого файла не нужно (корневой конфиг)
+root = true
+
+# Базовые настройки для всех файлов проекта
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# Настройки для HTML и Angular шаблонов (синхронизация с вашим Prettier)
+[*.{html,component.html}]
+indent_size = 2
+
+# Настройки для конфигурационных файлов JSON и разметки Markdown
+[*.{json,md}]
+indent_size = 2

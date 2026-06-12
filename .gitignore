@@ -2,9 +2,43 @@
 /Саморазвитие
 /Манифест
 
-# Ангуляр
-/dist
-/.angular
+# --- Зависимости (Packages) ---
+node_modules/
+/dist/
+/build/
 
-# Зависимости node_modules
-/node_modules
+# --- Кэш и логи разработки ---
+.angular/
+pnpm-debug.log*
+
+
+# --- Настройки VS Code (Локальные) ---
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/snippets/
+
+# --- Системные файлы операционных систем ---
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --- Переменные окружения и секреты (Environment) ---
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+
+# --- Кэш тестов и отчеты ---
+/coverage/
+.nyc_output/
+.karma/
+
+# --- Временные файлы (Temporary) ---
+tmp/
+*.tmp
+*.bak
