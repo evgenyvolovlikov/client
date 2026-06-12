@@ -1,0 +1,61 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "baseUrl": "./",
+        "strict": true,
+        "noImplicitOverride": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "skipLibCheck": true,
+        "isolatedModules": true,
+        "importHelpers": true,
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "allowArbitraryExtensions": true,
+        "lib": ["esnext", "dom"],
+        "esModuleInterop": true,
+        "exactOptionalPropertyTypes": true,
+        "noUncheckedIndexedAccess": true,
+        "forceConsistentCasingInFileNames": true,
+        "useDefineForClassFields": true,
+        "useUnknownInCatchVariables": true,
+        "resolveJsonModule": true,
+        "allowJs": false,
+        "paths": {
+            "@app/*": ["./src/app/*"],
+            "@pages/*": ["./src/pages/*"],
+            "@widgets/*": ["./src/widgets/*"],
+            "@features/*": ["./src/features/*"],
+            "@entities/*": ["./src/entities/*"],
+            "@shared/*": ["./src/shared/*"]
+        }
+    },
+    "angularCompilerOptions": {
+        "strictTemplates": true,
+        "strictInputTypes": true,
+        "enableI18nLegacyMessageIdFormat": false,
+        "strictInjectionParameters": true,
+        "strictInputAccessModifiers": true,
+        "strictStandalone": true,
+        "strictAttributeTypes": true,
+        "strictOutputEventTypes": true,
+        "strictDomEventTypes": true,
+        "strictContextGenerics": true,
+        "extendedDiagnostics": {
+            "defaultCategory": "error",
+            "checks": {
+                "missingControlFlowDirective": "error",
+                "nullishCoalescingNotNullable": "warning",
+                "optionalChainNotNullable": "warning",
+                "interpolatedSignalNotInvoked": "error",
+                "unusedStandaloneImports": "error"
+            }
+        }
+    },
+    "files": [],
+    "references": [{"path": "./tsconfig.app.json"}]
+}
