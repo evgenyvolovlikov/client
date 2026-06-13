@@ -27,7 +27,7 @@ export default tseslint.config(
         },
         rules: {
             // Главное правило FSD: проверка направления импортов (сверху вниз)
-            'boundaries/element-types': [
+            'boundaries/dependencies': [
                 'error',
                 {
                     default: 'allow',
