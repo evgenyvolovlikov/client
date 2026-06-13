@@ -13,6 +13,24 @@
     "bracketSameLine": false,
     "singleAttributePerLine": true,
 
+    "plugins": ["@trivago/prettier-plugin-sort-imports"],
+
+    "importOrderParserPlugins": ["typescript", "decorators-legacy"],
+
+    "importOrder": [
+        "^@angular/(.*)$",
+        "<THIRD_PARTY_MODULES>",
+        "^@app/(.*)$",
+        "^@pages/(.*)$",
+        "^@widgets/(.*)$",
+        "^@features/(.*)$",
+        "^@entities/(.*)$",
+        "^@shared/(.*)$",
+        "^[./]"
+    ],
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true,
+
     "overrides": [
         {
             "files": ["*.component.html", "*.html"],

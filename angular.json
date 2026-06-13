@@ -1,0 +1,97 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "cli": {
+        "packageManager": "pnpm",
+        "analytics": false,
+        "schematicCollections": ["angular-eslint"]
+    },
+    "newProjectRoot": "projects",
+    "projects": {
+        "ngalg": {
+            "projectType": "application",
+            "schematics": {
+                "@schematics/angular": {
+                    "skipTests": true
+                },
+                "@schematics/angular:component": {
+                    "inlineTemplate": false,
+                    "inlineStyle": true,
+                    "style": "scss",
+                    "changeDetection": "OnPush"
+                }
+            },
+            "root": "",
+            "sourceRoot": "src",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:application",
+                    "options": {
+                        "outputPath": {
+                            "base": "dist/ngalg"
+                        },
+                        "index": "src/index.html",
+                        "browser": "src/main.ts",
+                        "tsConfig": "tsconfig.app.json",
+                        "inlineStyleLanguage": "scss",
+                        "assets": [
+                            {
+                                "glob": "**/*",
+                                "input": "public",
+                                "ignore": ["**/.DS_Store", "**/*.gitkeep"]
+                            }
+                        ],
+                        "styles": ["src/app/styles/index.scss"],
+                        "stylePreprocessorOptions": {
+                            "includePaths": ["src/app/styles"]
+                        },
+                        "scripts": [],
+                        "prerender": false,
+                        "ssr": false
+                    },
+                    "configurations": {
+                        "production": {
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "500kB",
+                                    "maximumError": "1MB"
+                                }
+                            ],
+                            "optimization": true,
+                            "sourceMap": false,
+                            "namedChunks": false,
+                            "extractLicenses": true
+                        },
+                        "development": {
+                            "optimization": false,
+                            "extractLicenses": false,
+                            "sourceMap": true
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "serve": {
+                    "builder": "@angular/build:dev-server",
+                    "configurations": {
+                        "production": {
+                            "buildTarget": "ngalg:build:production"
+                        },
+                        "development": {
+                            "buildTarget": "ngalg:build:development",
+                            "hmr": true
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "lint": {
+                    "builder": "@angular-eslint/builder:lint",
+                    "options": {
+                        "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+                    }
+                }
+            }
+        }
+    }
+}
