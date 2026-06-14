@@ -6,9 +6,7 @@ import {RouterOutlet} from '@angular/router';
     standalone: true,
     imports: [RouterOutlet],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    template: `
-        <router-outlet />
-    `,
+    templateUrl: 'app.component.html',
 })
 export class AppComponent {
     protected readonly title = signal('ngalg');
