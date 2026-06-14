@@ -1,18 +1,4 @@
-@use '../../shared/styles/fonts';
-
-:root {
-    --font-sans: 'Geist Sans', -apple-system, blinkmacsystemfont, sans-serif;
-    --font-mono: 'Geist Mono', monospace;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: var(--font-sans);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
+@use './tokens';
+@use './fonts';
+@use './clear';
+@use './global';
