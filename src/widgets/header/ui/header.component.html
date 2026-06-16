@@ -1,10 +1,33 @@
 <header class="header">
-  <a routerLink="/">Landing</a>
-  <nav>
-    <a routerLink="/dashboard">Dashboard</a>
-    <a routerLink="/tracks">Tracks</a>
-    <a routerLink="/glossary">Glossary</a>
-  </nav>
+  <div class="container header__container">
+    <a
+      class="header__logo"
+      routerLink="/"
+    >
+      Landing
+    </a>
 
-  <button routerLink="/auth/login">Войти</button>
+    <nav class="header__nav">
+      <a
+        class="header__nav-link"
+        routerLink="/dashboard"
+      >
+        Dashboard
+      </a>
+      <a
+        class="header__nav-link"
+        routerLink="/tracks"
+      >
+        Tracks
+      </a>
+      <a routerLink="/glossary">Glossary</a>
+    </nav>
+
+    <button
+      class="header__login-btn"
+      routerLink="/auth/login"
+    >
+      Войти
+    </button>
+  </div>
 </header>

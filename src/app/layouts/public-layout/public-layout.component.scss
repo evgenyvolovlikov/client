@@ -1,0 +1,13 @@
+.public-layout {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    min-height: 100vh;
+    border: 1px solid;
+    box-sizing: border-box;
+
+    &__main {
+        display: block;
+        flex: 1;
+    }
+}
