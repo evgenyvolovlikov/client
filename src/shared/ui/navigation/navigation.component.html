@@ -1,0 +1,18 @@
+<nav class="navigation">
+  <ul class="navigation__list">
+    @for (element of elements(); track element.route) {
+      <li class="navigation__element">
+        <a
+          class="navigation__link"
+          [routerLink]="element.route"
+          routerLinkActive="navigation__link--active"
+        >
+          @if (element.icon) {
+            <span class="navigation__icon">{{ element.icon }}</span>
+          }
+          <span class="navigation__text">{{ element.label }}</span>
+        </a>
+      </li>
+    }
+  </ul>
+</nav>

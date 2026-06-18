@@ -13,7 +13,6 @@ export default tseslint.config(
             boundaries,
         },
         settings: {
-            // Настраиваем типы файлов и папок для FSD
             'boundaries/elements': [
                 {type: 'app', pattern: 'src/app/**/*'},
                 {type: 'pages', pattern: 'src/pages/**/*'},
@@ -21,12 +20,10 @@ export default tseslint.config(
                 {type: 'features', pattern: 'src/features/**/*'},
                 {type: 'entities', pattern: 'src/entities/**/*'},
                 {type: 'shared', pattern: 'src/shared/**/*'},
-                // Разрешаем системные файлы Angular в корне src/
                 {type: 'root', pattern: 'src/*.ts', mode: 'full'},
             ],
         },
         rules: {
-            // Главное правило FSD: проверка направления импортов (сверху вниз)
             'boundaries/dependencies': [
                 'error',
                 {

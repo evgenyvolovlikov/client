@@ -4,9 +4,12 @@ export const APP_ROUTES = {
     DASHBOARD: 'dashboard',
     TRACKS: 'tracks',
     PROFILE: 'profile',
-    GLOSSARY: 'glossary',
 
     /* Приватные */
+
+    /* Глоссарий */
+    GLOSSARY: 'glossary',
+    GLOSSARY_DETAIL: 'glossary/:id',
 
     /* Авторизация  */
     AUTH: 'auth',
@@ -15,3 +18,7 @@ export const APP_ROUTES = {
 
     NOT_FOUND: '**',
 } as const;
+
+export const getRoute = {
+    glossaryDetail: (slug: string) => `/${APP_ROUTES.GLOSSARY}/${slug}`,
+};

@@ -1,1 +1,23 @@
-<section>Landing Page</section>
+<section>
+  <h3>>Тест интеграции с NestJS:</h3>
+
+  @if (backendData()) {
+    <div style="color: green">
+      <p>
+        <strong>Статус:</strong>
+        {{ backendData()?.status }}
+      </p>
+      <p>
+        <strong>Сообщение с бэка:</strong>
+        {{ backendData()?.message }}
+      </p>
+      <small>Время сервера: {{ backendData()?.timestamp }}</small>
+    </div>
+  } @else if (errorLoading()) {
+    <p style="color: red">
+      ❌ Не удалось связаться с сервером. Проверьте CORS или запущен ли NestJS.
+    </p>
+  } @else {
+    <p>Загрузка данных с бэкенда...</p>
+  }
+</section>

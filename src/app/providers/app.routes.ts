@@ -1,5 +1,7 @@
 import {Route, Routes} from '@angular/router';
 
+import {SidebarLayoutComponent} from '@app/layouts/sidebar-layout/sidebar-layout.component';
+
 import {APP_ROUTES} from '@shared/config';
 
 import {PublicLayoutComponent} from '../layouts/public-layout/public-layout.component';
@@ -44,9 +46,23 @@ export const appRoutes: Routes = [
             },
 
             {
-                path: APP_ROUTES.GLOSSARY,
-                loadComponent: () =>
-                    import('@pages/glossary-page').then((c) => c.GlossaryPageComponent),
+                path: '',
+                component: SidebarLayoutComponent,
+                children: [
+                    {
+                        path: APP_ROUTES.GLOSSARY,
+                        loadComponent: () =>
+                            import('@pages/glossary-page').then((c) => c.GlossaryPageComponent),
+                    },
+
+                    {
+                        path: APP_ROUTES.GLOSSARY_DETAIL,
+                        loadComponent: () =>
+                            import('@pages/glossary-detail-page').then(
+                                (c) => c.GlossaryDetailPageComponent,
+                            ),
+                    },
+                ],
             },
         ],
     },
@@ -54,9 +70,9 @@ export const appRoutes: Routes = [
     authRoutes,
 
     // 404
-    {
-        path: '**',
-        redirectTo: '',
-        pathMatch: 'full',
-    },
+    // {
+    //     path: '**',
+    //     redirectTo: '',
+    //     pathMatch: 'full',
+    // },
 ];
