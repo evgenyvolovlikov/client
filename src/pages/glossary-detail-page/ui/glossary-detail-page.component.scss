@@ -1,0 +1,19 @@
+.glossary-detail {
+    display: grid;
+    align-items: start;
+    width: 100%;
+    padding: 2rem;
+    grid-template-columns: 1fr 14rem;
+    gap: 2.5rem;
+
+    &__content {
+        padding-bottom: 6.25rem;
+    }
+}
+
+.toc {
+    position: sticky;
+    top: 5.25rem;
+    padding-left: 1rem;
+    border-left: 1px solid #eef0f4;
+}
