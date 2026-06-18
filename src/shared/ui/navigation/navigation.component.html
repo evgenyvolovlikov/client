@@ -6,12 +6,29 @@
           class="navigation__link"
           [routerLink]="element.route"
           routerLinkActive="navigation__link--active"
+          [routerLinkActiveOptions]="{exact: element.exact ?? false}"
         >
           @if (element.icon) {
             <span class="navigation__icon">{{ element.icon }}</span>
           }
           <span class="navigation__text">{{ element.label }}</span>
         </a>
+
+        @if (element.children && element.children.length > 0 && isBranchActive(element.route)) {
+          <ul class="navigation__sub-list">
+            @for (subElement of element.children; track subElement.route) {
+              <li class="navigation__sub-item">
+                <a
+                  class="navigation__sub-link"
+                  [routerLink]="subElement.route"
+                  routerLinkActive="navigation__sub-link--active"
+                >
+                  <span class="navigation__text">{{ subElement.label }}</span>
+                </a>
+              </li>
+            }
+          </ul>
+        }
       </li>
     }
   </ul>

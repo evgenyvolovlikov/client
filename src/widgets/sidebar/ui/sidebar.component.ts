@@ -15,8 +15,24 @@ import {NavigationComponent} from '@shared/ui';
 export class SidebarComponent {
     protected menuElements = signal<SidebarLink[]>([
         {
-            label: 'Эмоции',
+            label: '📖 Эмоции',
             route: getRoute.glossaryDetail('emotions'),
+            children: [
+                {
+                    label: '🍂 Страх',
+                    route: `${getRoute.glossaryDetail('emotions')}/fear`,
+                },
+
+                {
+                    label: '☀️ Радость',
+                    route: `${getRoute.glossaryDetail('emotions')}/joy`,
+                },
+
+                {
+                    label: '🍵 Гнев',
+                    route: `${getRoute.glossaryDetail('emotions')}/anger`,
+                },
+            ],
         },
     ]);
 }

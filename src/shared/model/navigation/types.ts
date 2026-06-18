@@ -4,4 +4,5 @@ export interface SidebarLink {
     icon?: string;
     exact?: boolean;
     requiredRole?: string;
+    children?: SidebarLink[];
 }

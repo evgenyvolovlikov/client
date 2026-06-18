@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, input} from '@angular/core';
-import {RouterLink, RouterLinkActive} from '@angular/router';
+import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
+import {Router, RouterLink, RouterLinkActive} from '@angular/router';
 
 import {SidebarLink} from '@shared/model';
 
@@ -13,4 +13,15 @@ import {SidebarLink} from '@shared/model';
 })
 export class NavigationComponent {
     public elements = input.required<SidebarLink[]>();
+
+    private router = inject(Router);
+
+    protected isBranchActive(route: string | string[]): boolean {
+        if (Array.isArray(route)) {
+            const fullRoute = route.join('/').replace(/\/+/g, '/');
+            return this.router.url.startsWith(fullRoute);
+        }
+
+        return this.router.url.startsWith(route);
+    }
 }
