@@ -38,7 +38,7 @@
     <div class="article-actions">
       <a
         class="button button--edit"
-        [routerLink]="['/glossary', id(), 'edit']"
+        [routerLink]="getRoute.glossaryEdit(id())"
       >
         ✏️ Редактировать статью
       </a>

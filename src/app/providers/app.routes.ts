@@ -56,10 +56,26 @@ export const appRoutes: Routes = [
                     },
 
                     {
+                        path: APP_ROUTES.GLOSSARY_CREATE,
+                        loadComponent: () =>
+                            import('@pages/glossary-form-page').then(
+                                (c) => c.GlossaryFormPageComponent,
+                            ),
+                    },
+
+                    {
                         path: APP_ROUTES.GLOSSARY_DETAIL,
                         loadComponent: () =>
                             import('@pages/glossary-detail-page').then(
                                 (c) => c.GlossaryDetailPageComponent,
+                            ),
+                    },
+
+                    {
+                        path: APP_ROUTES.GLOSSARY_EDIT,
+                        loadComponent: () =>
+                            import('@pages/glossary-form-page').then(
+                                (c) => c.GlossaryFormPageComponent,
                             ),
                     },
                 ],

@@ -1,1 +1,25 @@
-<section>Glossary Form Page</section>
+<section class="glossary-form">
+  <h1>{{ pageTitle() }}</h1>
+
+  <form (submit)="onSubmit($event)">
+    <div>
+      <label for="title">Название статьи</label>
+
+      <input
+        class="form__input"
+        id="title"
+        type="text"
+        formControlName="title"
+        placeholder="Например: Понятие эмоций"
+      />
+    </div>
+
+    <div>
+      <button type="submit">
+        {{ isEditMode() ? 'Сохранить изменения' : 'Опубликовать' }}
+      </button>
+
+      <a [routerLink]="isEditMode() ? ['/glossary', id()] : ['/glossary', 'emotions']">Отмена</a>
+    </div>
+  </form>
+</section>

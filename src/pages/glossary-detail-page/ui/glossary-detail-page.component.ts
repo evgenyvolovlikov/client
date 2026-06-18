@@ -1,6 +1,8 @@
 import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {RouterLink} from '@angular/router';
 
+import {getRoute} from '@shared/config';
+
 @Component({
     selector: 'app-p-glossary-detail',
     standalone: true,
@@ -11,6 +13,8 @@ import {RouterLink} from '@angular/router';
 })
 export class GlossaryDetailPageComponent {
     public id = input.required<string>();
+
+    protected readonly getRoute = getRoute;
 
     protected onDelete(): void {
         const isConfirmed = confirm('Вы уверены, что хотите удалить эту статью?');
