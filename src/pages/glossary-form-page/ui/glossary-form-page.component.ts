@@ -81,6 +81,6 @@ export class GlossaryFormPageComponent implements OnInit {
             return;
         }
 
-        console.log('Сформированный Payload по модели Article:', this.form.getRawValue());
+        console.info('Сформированный Payload по модели Article:', this.form.getRawValue());
     }
 }
