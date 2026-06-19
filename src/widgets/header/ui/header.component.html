@@ -1,33 +1,57 @@
 <header class="header">
   <div class="container header__container">
+    <!-- Логотип бренда -->
     <a
       class="header__logo"
       routerLink="/"
     >
-      Landing
+      <span class="header__logo-icon">⚡</span>
+      <span class="header__logo-text">NgAlg</span>
     </a>
 
+    <!-- Система навигации -->
     <nav class="header__nav">
       <a
-        class="header__nav-link"
+        class="header__link"
         routerLink="/dashboard"
+        routerLinkActive="header__link--active"
       >
         Dashboard
       </a>
+
       <a
-        class="header__nav-link"
+        class="header__link"
         routerLink="/tracks"
+        routerLinkActive="header__link--active"
       >
         Tracks
       </a>
-      <a routerLink="/glossary">Glossary</a>
+
+      <a
+        class="header__link"
+        routerLink="/glossary"
+        routerLinkActive="header__link--active"
+      >
+        Glossary
+      </a>
     </nav>
 
-    <button
-      class="header__login-btn"
-      routerLink="/auth/login"
-    >
-      Войти
-    </button>
+    <!-- Блок оформления управления и авторизации -->
+    <div class="header__actions">
+      <!-- Переключатель тем -->
+      <button
+        class="header__theme-toggle"
+        (click)="toggleTheme()"
+      >
+        {{ isLightTheme() ? '🌙' : '☀️' }}
+      </button>
+
+      <button
+        class="header__login-btn"
+        routerLink="/auth/login"
+      >
+        Войти
+      </button>
+    </div>
   </div>
 </header>

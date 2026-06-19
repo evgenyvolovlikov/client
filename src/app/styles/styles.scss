@@ -30,6 +30,22 @@ body.light-theme {
     --font-sans: 'Geist Sans', system-ui, -apple-system, blinkmacsystemfont, sans-serif;
     --font-mono: 'Geist Mono', monaco, consolas, monospace;
 
+    /* --- ВЫСОТА КОМПОНЕНТОВ --- */
+    --header-height: 56px;
+    --footer-padding-y: var(--unit-16);
+
+    /* НАСЫЩЕННОСТЬ ШРИФТОВ */
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+
+    /* РАЗМЕР ШРИФТОВ */
+    --font-size-xs: 0.813rem; // ~13px (Для мета-информации, копирайта)
+    --font-size-sm: 0.875rem; // ~14px (Для навигационных ссылок, кнопок)
+    --font-size-base: 1rem; // ~16px (Основной текст статей и кода)
+    --font-size-lg: 1.125rem; // ~18px (Подзаголовки, логотип хедера)
+    --font-size-xl: 1.5rem; // ~24px (Большие заголовки секций)
+
     /* --- ШКАЛА ОТСТУПОВ  --- */
     --unit-1: 0.25rem; // 4px
     --unit-2: 0.5rem; // 8px
