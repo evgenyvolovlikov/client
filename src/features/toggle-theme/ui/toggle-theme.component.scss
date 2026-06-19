@@ -1,0 +1,15 @@
+.theme-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--unit-1);
+    background: transparent;
+    border: none;
+    font-size: var(--font-size-lg);
+    transition: transform var(--transition-duration-fast) var(--transition-easing-ide);
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}

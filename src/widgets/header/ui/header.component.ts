@@ -1,27 +1,14 @@
-import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterLink, RouterLinkActive} from '@angular/router';
+
+import {ToggleTheme} from '@features/toggle-theme';
 
 @Component({
     selector: 'app-w-header',
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [RouterLink, RouterLinkActive],
+    imports: [RouterLink, RouterLinkActive, ToggleTheme],
     templateUrl: 'header.component.html',
     styleUrl: 'header.component.scss',
 })
-export class HeaderComponent {
-    protected readonly isLightTheme = signal<boolean>(false);
-
-    constructor() {
-        const body = document.body;
-        if (this.isLightTheme()) {
-            body.classList.add('light-theme');
-        } else {
-            body.classList.remove('light-theme');
-        }
-    }
-
-    protected toggleTheme(): void {
-        this.isLightTheme.update((state) => !state);
-    }
-}
+export class HeaderComponent {}

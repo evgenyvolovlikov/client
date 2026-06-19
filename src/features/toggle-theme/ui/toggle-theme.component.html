@@ -1,0 +1,6 @@
+<button
+  class="theme-toggle"
+  (click)="themeService.toggleTheme()"
+>
+  {{ themeService.isLightTheme() ? '🌙' : '☀️' }}
+</button>

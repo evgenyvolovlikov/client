@@ -52,18 +52,18 @@
         gap: var(--unit-4);
     }
 
-    &__theme-toggle {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: var(--unit-1);
-        font-size: var(--font-size-lg);
-        transition: transform var(--transition-duration-fast) var(--transition-easing-ide);
+    // &__theme-toggle {
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     padding: var(--unit-1);
+    //     font-size: var(--font-size-lg);
+    //     transition: transform var(--transition-duration-fast) var(--transition-easing-ide);
 
-        &:hover {
-            transform: scale(1.1);
-        }
-    }
+    //     &:hover {
+    //         transform: scale(1.1);
+    //     }
+    // }
 
     &__login-btn {
         padding: var(--unit-2) var(--unit-4);

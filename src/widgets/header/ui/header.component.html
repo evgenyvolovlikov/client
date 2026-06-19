@@ -39,12 +39,7 @@
     <!-- Блок оформления управления и авторизации -->
     <div class="header__actions">
       <!-- Переключатель тем -->
-      <button
-        class="header__theme-toggle"
-        (click)="toggleTheme()"
-      >
-        {{ isLightTheme() ? '🌙' : '☀️' }}
-      </button>
+      <app-f-toggle-theme />
 
       <button
         class="header__login-btn"
