@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {RouterLink} from '@angular/router';
 
 import {getRoute} from '@shared/config';
@@ -13,5 +13,5 @@ import {getRoute} from '@shared/config';
 })
 export class FooterComponent {
     protected readonly getRoute = getRoute;
-    protected readonly currentYear = new Date().getFullYear();
+    protected readonly currentYear = signal<number>(new Date().getFullYear());
 }
