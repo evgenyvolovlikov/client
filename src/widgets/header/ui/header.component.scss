@@ -63,7 +63,7 @@
         transition: opacity var(--transition-duration-fast) var(--transition-easing-ide);
 
         &:hover {
-            opacity: 0.9;
+            opacity: var(--opacity-hover);
         }
     }
 }
