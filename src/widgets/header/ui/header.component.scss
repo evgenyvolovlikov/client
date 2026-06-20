@@ -41,7 +41,7 @@
         }
 
         &--active {
-            font-weight: 500;
+            font-weight: var(--font-weight-medium);
             color: var(--color-text-main);
         }
     }
@@ -52,26 +52,14 @@
         gap: var(--unit-4);
     }
 
-    // &__theme-toggle {
-    //     display: flex;
-    //     justify-content: center;
-    //     align-items: center;
-    //     padding: var(--unit-1);
-    //     font-size: var(--font-size-lg);
-    //     transition: transform var(--transition-duration-fast) var(--transition-easing-ide);
-
-    //     &:hover {
-    //         transform: scale(1.1);
-    //     }
-    // }
-
     &__login-btn {
         padding: var(--unit-2) var(--unit-4);
         background-color: var(--color-text-main);
-        border: 1px solid;
+        border: 1px solid var(--color-border);
         border-radius: var(--radius-sm);
         font-size: var(--font-size-sm);
         font-weight: var(--font-weight-medium);
+        color: var(--color-bg-main);
         transition: opacity var(--transition-duration-fast) var(--transition-easing-ide);
 
         &:hover {

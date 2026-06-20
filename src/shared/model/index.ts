@@ -1,1 +1,1 @@
-export type {SidebarLink} from './navigation/types';
+export type {NavigationLink} from './navigation/types';

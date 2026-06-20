@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 
 import {getRoute} from '@shared/config';
-import {SidebarLink} from '@shared/model';
+import {NavigationLink} from '@shared/model';
 import {NavigationComponent} from '@shared/ui';
 
 @Component({
@@ -13,7 +13,7 @@ import {NavigationComponent} from '@shared/ui';
     imports: [NavigationComponent],
 })
 export class SidebarComponent {
-    protected menuElements = signal<SidebarLink[]>([
+    protected menuElements = signal<NavigationLink[]>([
         {
             label: 'Эмоции',
             route: getRoute.glossaryDetail('emotions'),

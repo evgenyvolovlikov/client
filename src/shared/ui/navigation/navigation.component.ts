@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {Router, RouterLink, RouterLinkActive} from '@angular/router';
 
-import {SidebarLink} from '@shared/model';
+import {NavigationLink} from '@shared/model';
 
 @Component({
     selector: 'app-s-navigation',
@@ -12,7 +12,9 @@ import {SidebarLink} from '@shared/model';
     styleUrl: 'navigation.component.scss',
 })
 export class NavigationComponent {
-    public elements = input.required<SidebarLink[]>();
+    public readonly elements = input.required<NavigationLink[]>();
+
+    public readonly orientation = input<'horizontal' | 'vertical'>('vertical');
 
     private router = inject(Router);
 
