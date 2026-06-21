@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, input} from '@angular/core';
-import {RouterLink} from '@angular/router';
 
 import {getRoute} from '@shared/config';
 
@@ -9,7 +8,6 @@ import {getRoute} from '@shared/config';
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: 'glossary-detail-page.component.html',
     styleUrl: 'glossary-detail-page.component.scss',
-    imports: [RouterLink],
 })
 export class GlossaryDetailPageComponent {
     public id = input.required<string>();
