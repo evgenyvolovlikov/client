@@ -1,14 +1,18 @@
-<nav class="navigation">
+<nav [class.navigation]="!isSubList()">
   <ul
-    class="navigation__list"
-    [class.navigation__list--horizontal]="orientation() === 'horizontal'"
+    [class.navigation__list]="!isSubList()"
+    [class.navigation__sub-list]="isSubList()"
+    [class.navigation__list--horizontal]="orientation() === 'horizontal' && !isSubList()"
   >
     @for (element of elements(); track element.route) {
       <li class="navigation__element">
         <a
-          class="navigation__link"
+          [class.navigation__link]="!isSubList()"
+          [class.navigation__sub-link]="isSubList()"
           [routerLink]="element.route"
-          routerLinkActive="navigation__link--active"
+          [routerLinkActive]="
+            isSubList() ? 'navigation__sub-link--active' : 'navigation__link--active'
+          "
           [routerLinkActiveOptions]="{exact: element.exact ?? false}"
         >
           @if (element.icon) {
@@ -16,26 +20,12 @@
           }
           <span class="navigation__text">{{ element.label }}</span>
         </a>
-
-        @if (
-          orientation() === 'vertical' &&
-          element.children &&
-          element.children.length > 0 &&
-          isBranchActive(element.route)
-        ) {
-          <ul class="navigation__sub-list">
-            @for (subElement of element.children; track subElement.route) {
-              <li class="navigation__sub-item">
-                <a
-                  class="navigation__sub-link"
-                  [routerLink]="subElement.route"
-                  routerLinkActive="navigation__sub-link--active"
-                >
-                  <span class="navigation__text">{{ subElement.label }}</span>
-                </a>
-              </li>
-            }
-          </ul>
+        @if (orientation() === 'vertical' && element.children && element.children.length > 0) {
+          <app-s-navigation
+            [elements]="element.children"
+            [orientation]="orientation()"
+            [isSubList]="true"
+          />
         }
       </li>
     }

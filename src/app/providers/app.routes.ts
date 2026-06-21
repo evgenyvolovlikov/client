@@ -45,6 +45,7 @@ export const appRoutes: Routes = [
                     import('@pages/tracks-page').then((c) => c.TracksPageComponentPage),
             },
 
+            /* GLOSSARY PAGES */
             {
                 path: '',
                 component: SidebarLayoutComponent,
@@ -86,9 +87,9 @@ export const appRoutes: Routes = [
     authRoutes,
 
     // 404
-    // {
-    //     path: '**',
-    //     redirectTo: '',
-    //     pathMatch: 'full',
-    // },
+    {
+        path: '**',
+        redirectTo: '',
+        pathMatch: 'full',
+    },
 ];

@@ -8,8 +8,8 @@ export const APP_ROUTES = {
     /* Глоссарий */
     GLOSSARY: 'glossary',
     GLOSSARY_CREATE: 'glossary/create',
-    GLOSSARY_DETAIL: 'glossary/:id',
-    GLOSSARY_EDIT: 'glossary/:id/edit',
+    GLOSSARY_DETAIL: 'glossary/:category/:id',
+    GLOSSARY_EDIT: 'glossary/:category/:id/edit',
 
     /* Авторизация  */
     AUTH: 'auth',
@@ -20,7 +20,11 @@ export const APP_ROUTES = {
 } as const;
 
 export const getRoute = {
-    glossaryDetail: (slug: string) => `/${APP_ROUTES.GLOSSARY}/${slug}`,
-    glossaryEdit: (slug: string) => `/${APP_ROUTES.GLOSSARY}/${slug}/edit`,
+    glossaryDetail: (category: string, slug: string) =>
+        `/${APP_ROUTES.GLOSSARY}/${category}/${slug}`,
+
+    glossaryEdit: (category: string, slug: string) =>
+        `/${APP_ROUTES.GLOSSARY}/${category}/${slug}/edit`,
+
     glossaryCreate: () => `/${APP_ROUTES.GLOSSARY_CREATE}`,
 };
