@@ -1,82 +1,83 @@
 {
-    "extends": ["stylelint-config-standard-scss"],
-    "plugins": ["stylelint-order"],
-    "rules": {
-        "order/properties-order": [
-            [
-                "position",
-                "top",
-                "right",
-                "bottom",
-                "left",
-                "z-index",
+	"extends": ["stylelint-config-standard-scss"],
+	"plugins": ["stylelint-order"],
+	"rules": {
+		"order/properties-order": [
+			[
+				"position",
+				"top",
+				"right",
+				"bottom",
+				"left",
+				"z-index",
 
-                "display",
-                "flex",
-                "flex-direction",
-                "justify-content",
-                "align-items",
-                "grid",
+				"display",
+				"flex",
+				"flex-direction",
+				"justify-content",
+				"align-items",
+				"grid",
 
-                "width",
-                "min-width",
-                "max-width",
-                "height",
-                "min-height",
-                "max-height",
+				"width",
+				"min-width",
+				"max-width",
+				"height",
+				"min-height",
+				"max-height",
 
-                "margin",
-                "margin-top",
-                "margin-right",
-                "margin-bottom",
-                "margin-left",
-                "padding",
-                "padding-top",
-                "padding-right",
-                "padding-bottom",
-                "padding-left",
+				"margin",
+				"margin-top",
+				"margin-right",
+				"margin-bottom",
+				"margin-left",
+				"padding",
+				"padding-top",
+				"padding-right",
+				"padding-bottom",
+				"padding-left",
 
-                "background",
-                "background-color",
-                "background-image",
-                "border",
-                "border-radius",
-                "box-shadow",
-                "opacity",
+				"background",
+				"background-color",
+				"background-image",
+				"border",
+				"border-radius",
+				"box-shadow",
+				"opacity",
 
-                "font-family",
-                "font-size",
-                "font-weight",
-                "line-height",
-                "color",
-                "text-align",
+				"font-family",
+				"font-size",
+				"font-weight",
+				"line-height",
+				"color",
+				"text-align",
 
-                "transition",
-                "animation",
-                "cursor"
-            ],
+				"transition",
+				"animation",
+				"cursor"
+			],
 
-            {
-                "unspecified": "bottom",
-                "emptyLineBeforeUnspecified": "never"
-            }
-        ],
-        "declaration-no-important": null,
-        "max-nesting-depth": 3,
-        "color-named": "never",
-        "declaration-block-no-redundant-longhand-properties": true,
-        "no-empty-source": null,
+			{
+				"unspecified": "bottom",
+				"emptyLineBeforeUnspecified": "never"
+			}
+		],
+		"declaration-no-important": null,
+		"max-nesting-depth": 3,
+		"color-named": "never",
+		"declaration-block-no-redundant-longhand-properties": true,
+		"no-empty-source": null,
 
-        "selector-class-pattern": "^[a-z0-9]+(-[a-z0-9]+)*(__[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z0-9]+(-[a-z0-9]+)*)?$",
-        "scss/selector-no-redundant-nesting-selector": null,
+		"declaration-property-unit-allowed-list": {
+			"font-size": ["px", "rem", "em"],
+			"margin": ["px", "rem", "em", "%"],
+			"padding": ["px", "rem", "em", "%"],
+			"width": ["px", "rem", "%", "vw"],
+			"height": ["px", "rem", "%", "vh"]
+		},
 
-        "selector-pseudo-element-no-unknown": [
-            true,
-            {
-                "ignorePseudoElements": ["ng-deep"]
-            }
-        ],
+		"selector-class-pattern": "^[a-z0-9]+(-[a-z0-9]+)*(__[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z0-9]+(-[a-z0-9]+)*)?$",
+		"scss/selector-no-redundant-nesting-selector": null,
 
-        "scss/at-mixin-pattern": null
-    }
+		"scss/at-mixin-pattern": null
+	}
 }

@@ -7,13 +7,20 @@ charset = utf-8
 end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
-indent_style = space
+indent_style = tab
 indent_size = 4
 
-# Настройки для HTML и Angular шаблонов (синхронизация с вашим Prettier)
+# HTML и Angular шаблоны — пробелы, размер 2
 [*.{html,component.html}]
+indent_style = space
 indent_size = 2
 
-# Настройки для конфигурационных файлов JSON и разметки Markdown
-[*.{json,md}]
+# JSON, Markdown, YAML — пробелы, размер 2
+[*.{json,md,yaml,yml}]
+indent_style = space
 indent_size = 2
+
+# Стили SCSS и CSS — ТАБЫ
+[*.{scss,css}]
+indent_style = tab
+indent_size = 4
