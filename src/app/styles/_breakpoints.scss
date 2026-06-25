@@ -1,0 +1,58 @@
+@use 'sass:map';
+@use 'sass:meta';
+
+$breakpoints: (
+	'xs': 480px,
+	'sm': 576px,
+	'md': 768px,
+	'lg': 1024px,
+	'xl': 1280px,
+	'xxl': 1440px,
+) !default;
+
+/// @param {String | Number} $breakpoint - Ключ из карты (sm, md, lg...) или кастомное значение (например, 1100px)
+/// @param {String} $direction - Стратегия: 'max' (desktop-first), 'min' (mobile-first), 'between' (диапазон)
+/// @param {String | Number | Null} $next-breakpoint - Конечная точка (только для стратегии 'between')
+@mixin respond-to($breakpoint, $direction: 'max', $next-breakpoint: null) {
+	$width: null;
+
+	/* Валидация первой точки */
+	@if map.has-key($breakpoints, $breakpoint) {
+		$width: map.get($breakpoints, $breakpoint);
+	} @else if meta.type-of($breakpoint) == 'number' {
+		$width: $breakpoint;
+	} @else {
+		@error "НЕДОПУСТИМОЕ ЗНАЧЕНИЕ: '#{$breakpoint}'. Используй ключи из карты: #{map.keys($breakpoints)} или число (px, rem).";
+	}
+
+	/* Генерация медиа-запроса в зависимости от стратегии */
+	@if $direction == 'max' {
+		@media (max-width: $width) {
+			@content;
+		}
+	} @else if $direction == 'min' {
+		@media (min-width: $width) {
+			@content;
+		}
+	} @else if $direction == 'between' {
+		@if $next-breakpoint == null {
+			@error "ОШИБКА: Для стратегии 'between' необходимо передать третий аргумент ($next-breakpoint).";
+		}
+
+		$max-width: null;
+
+		@if map.has-key($breakpoints, $next-breakpoint) {
+			$max-width: map.get($breakpoints, $next-breakpoint);
+		} @else if meta.type-of($next-breakpoint) == 'number' {
+			$max-width: $next-breakpoint;
+		} @else {
+			@error "НЕДОПУСТИМОЕ ЗНАЧЕНИЕ: '#{$next-breakpoint}' для верхней границы.";
+		}
+
+		@media (min-width: $width) and (max-width: $max-width) {
+			@content;
+		}
+	} @else {
+		@error "НЕИЗВЕСТНОЕ НАПРАВЛЕНИЕ: '#{$direction}'. Допустимы только: 'max', 'min', 'between'.";
+	}
+}

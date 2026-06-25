@@ -15,10 +15,10 @@ export default tseslint.config(
 		settings: {
 			'boundaries/elements': [
 				{type: 'app', pattern: 'src/app/**/*'},
-				{type: 'pages', pattern: 'src/pages/**/*'},
-				{type: 'widgets', pattern: 'src/widgets/**/*'},
-				{type: 'features', pattern: 'src/features/**/*'},
-				{type: 'entities', pattern: 'src/entities/**/*'},
+				{type: 'pages', pattern: 'src/pages/:slice/**/*'},
+				{type: 'widgets', pattern: 'src/widgets/:slice/**/*'},
+				{type: 'features', pattern: 'src/features/:slice/**/*'},
+				{type: 'entities', pattern: 'src/entities/:slice/**/*'},
 				{type: 'shared', pattern: 'src/shared/**/*'},
 				{type: 'root', pattern: 'src/*.ts', mode: 'full'},
 			],
@@ -34,10 +34,36 @@ export default tseslint.config(
 							from: 'shared',
 							disallow: ['app', 'pages', 'widgets', 'features', 'entities'],
 						},
+
 						{from: 'entities', disallow: ['app', 'pages', 'widgets', 'features']},
 						{from: 'features', disallow: ['app', 'pages', 'widgets']},
 						{from: 'widgets', disallow: ['app', 'pages']},
 						{from: 'pages', disallow: ['app']},
+
+						{
+							from: 'entities',
+							disallow: [['entities', {slice: '!${slice}'}]],
+							message:
+								'Запрещен импорт из соседнего слайса entities: ${file.slice} -> ${dependency.slice}',
+						},
+						{
+							from: 'features',
+							disallow: [['features', {slice: '!${slice}'}]],
+							message:
+								'Запрещен импорт из соседнего слайса features: ${file.slice} -> ${dependency.slice}',
+						},
+						{
+							from: 'widgets',
+							disallow: [['widgets', {slice: '!${slice}'}]],
+							message:
+								'Запрещен импорт из соседнего слайса widgets: ${file.slice} -> ${dependency.slice}',
+						},
+						{
+							from: 'pages',
+							disallow: [['pages', {slice: '!${slice}'}]],
+							message:
+								'Запрещен импорт из соседнего слайса pages: ${file.slice} -> ${dependency.slice}',
+						},
 					],
 				},
 			],
@@ -64,7 +90,9 @@ export default tseslint.config(
 			'no-console': ['warn', {allow: ['warn', 'error']}],
 			'@angular-eslint/prefer-standalone': 'error',
 
+			// Защита Strict Mode согласно Манифесту 1.2
 			'@typescript-eslint/no-explicit-any': 'error',
+			'@typescript-eslint/no-non-null-assertion': 'error', // <-- ДОБАВЛЕНО: Запрет на оператор "!"
 			'@typescript-eslint/no-unused-vars': [
 				'error',
 				{argsIgnorePattern: '^_', varsIgnorePattern: '^_'},
@@ -77,7 +105,10 @@ export default tseslint.config(
 	},
 	{
 		files: ['**/*.html'],
-		extends: [...angular.configs.templateRecommended, ...angular.configs.templateAccessibility],
+		extends: [
+			...angular.configs.templateRecommended,
+			...angular.configs.templateAccessibility,
+		],
 		rules: {
 			'@angular-eslint/template/interactive-supports-focus': 'off',
 		},

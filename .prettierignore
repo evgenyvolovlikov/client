@@ -1,10 +1,11 @@
-# --- Сборка и зависимости ---
+# --- Сборка, компиляция и зависимости ---
 node_modules/
 dist/
 build/
+out-tsc/
 .angular/
 
-# --- Инфраструктура и IDE ---
+# --- Инфраструктура, секреты и IDE ---
 .vscode/
 .idea/
 .DS_Store
@@ -12,7 +13,7 @@ build/
 .env
 .env.*
 
-# --- Автогенерация ---
+# --- Автогенерация и Локфайлы (Их форматировать запрещено) ---
 pnpm-lock.json
 package-lock.json
 yarn.lock
@@ -22,3 +23,10 @@ coverage/
 .nyc_output/
 cypress/
 playwright-report/
+
+# --- Медиа и Статика (Ускоряем работу Prettier) ---
+src/assets/**/*.svg
+src/assets/**/*.png
+src/assets/**/*.jpg
+public/**/*.svg
+public/**/*.ico

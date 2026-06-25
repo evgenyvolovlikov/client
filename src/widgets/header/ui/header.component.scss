@@ -1,69 +1,43 @@
 .header {
-    width: 100%;
-    background-color: var(--color-bg-panel);
-    font-family: var(--font-mono);
-    border-bottom: 1px solid var(--color-border);
+	width: 100%;
+	background-color: var(--color-bg-panel);
+	border-bottom: 1px solid var(--color-border);
 
-    &__container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: var(--header-height);
-    }
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: var(--header-height);
+	}
 
-    &__logo {
-        display: flex;
-        align-items: center;
-        font-size: var(--font-size-lg);
-        font-weight: var(--font-weight-bold);
-        color: var(--color-text-main);
-        gap: var(--unit-1);
+	&__logo {
+		display: flex;
+		align-items: center;
+		font-size: var(--font-size-lg);
+		font-weight: var(--font-weight-bold);
+		color: var(--color-text-main);
+		gap: var(--unit-1);
+	}
 
-        &-icon {
-            color: var(--color-success);
-        }
-    }
+	&__nav {
+		display: flex;
+		align-items: center;
+		gap: var(--unit-4);
+	}
 
-    &__nav {
-        display: flex;
-        align-items: center;
-        gap: var(--unit-4);
-    }
+	&__actions {
+		display: flex;
+		align-items: center;
+		gap: var(--unit-4);
+	}
 
-    &__link {
-        padding: var(--unit-1) var(--unit-2);
-        font-size: var(--font-size-sm);
-        color: var(--color-text-muted);
-        transition: color var(--transition-duration-fast) var(--transition-easing-ide);
-
-        &:hover {
-            color: var(--color-text-main);
-        }
-
-        &--active {
-            font-weight: var(--font-weight-medium);
-            color: var(--color-text-main);
-        }
-    }
-
-    &__actions {
-        display: flex;
-        align-items: center;
-        gap: var(--unit-4);
-    }
-
-    &__login-btn {
-        padding: var(--unit-2) var(--unit-4);
-        background-color: var(--color-text-main);
-        border: 1px solid var(--color-border);
-        border-radius: var(--radius-sm);
-        font-size: var(--font-size-sm);
-        font-weight: var(--font-weight-medium);
-        color: var(--color-bg-main);
-        transition: opacity var(--transition-duration-fast) var(--transition-easing-ide);
-
-        &:hover {
-            opacity: var(--opacity-hover);
-        }
-    }
+	&__login-btn {
+		padding: var(--unit-2) var(--unit-4);
+		background-color: var(--color-text-main);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-sm);
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-medium);
+		color: var(--color-bg-main);
+	}
 }

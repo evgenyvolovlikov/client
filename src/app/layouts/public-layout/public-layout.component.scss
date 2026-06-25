@@ -1,14 +1,12 @@
 .public-layout {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    min-height: 100vh;
-    background-color: var(--color-bg-main);
-    box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-height: 100%;
 
-    &__main {
-        display: block;
-        flex: 1;
-        padding: var(--unit-8) 0 var(--unit-12);
-    }
+	&__main {
+		display: block;
+		flex: 1;
+		padding: var(--unit-8) 0 var(--unit-12);
+	}
 }

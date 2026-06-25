@@ -5,7 +5,6 @@
       class="header__logo"
       routerLink="/"
     >
-      <span class="header__logo-icon">⚡</span>
       <span class="header__logo-text">NgAlg</span>
     </a>
 
@@ -24,7 +23,7 @@
 
       <button
         class="header__login-btn"
-        routerLink="/auth/login"
+        [routerLink]="loginRoute"
       >
         Войти
       </button>

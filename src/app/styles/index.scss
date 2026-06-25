@@ -1,1 +1,233 @@
-@use './styles';
+// src/app/styles.scss
+
+:root {
+	/* --- МОНОХРОМНАЯ ПАЛИТРА (DARK) --- */
+	--color-bg-main: #000;
+	--color-bg-panel: #0a0a0a;
+	--color-bg-surface: #141414;
+	--color-text-main: #fff;
+	--color-text-muted: #808080;
+	--color-text-disabled: #404040;
+	--color-border: #333;
+
+	/* --- СЕМАНТИЧЕСКИЕ ТОКЕНЫ --- */
+	--color-success: #17c964;
+	--color-error: #f31260;
+	--color-warning: #f5a524;
+	--color-info: #006fee;
+
+	/* --- СЕМАHТИЧЕСКИЕ ТОКЕНЫ ДЛЯ ФОРМ (DARK) --- */
+	--color-form-bg: var(--color-bg-main);
+	--color-form-bg-alt: var(--color-bg-panel);
+	--color-form-text: var(--color-text-main);
+	--color-form-text-muted: var(--color-text-muted);
+	--color-form-border: var(--color-text-main);
+	--color-form-border-muted: var(--color-text-muted);
+
+	/* --- ТИПОГРАФИКА --- */
+	--font-sans: 'Geist Sans', system-ui, -apple-system, blinkmacsystemfont, sans-serif;
+	--font-mono: 'Geist Mono', monaco, consolas, monospace;
+
+	/* ОКРУГЛЕНИЕ */
+	--radius-xs: 0px;
+	--radius-sm: 0px;
+	--radius-md: 0px;
+
+	/* КОМПОНЕНТЫ */
+	--header-height: 56px;
+	--footer-padding-y: var(--unit-16);
+
+	/* НАЧЕРТАНИЕ */
+	--font-weight-regular: 400;
+	--font-weight-medium: 500;
+	--font-weight-bold: 700;
+
+	/* РАЗМЕР ШРИФТА */
+	--font-size-xs: 0.813rem;
+	--font-size-sm: 0.875rem;
+	--font-size-base: 1rem;
+	--font-size-lg: 1.125rem;
+	--font-size-xl: 1.5rem;
+
+	/* --- ШКАЛА ОТСТУПОВ --- */
+	--unit-1: 0.25rem;
+	--unit-2: 0.5rem;
+	--unit-3: 0.75rem;
+	--unit-4: 1rem;
+	--unit-5: 1.25rem;
+	--unit-6: 1.5rem;
+	--unit-8: 2rem;
+	--unit-10: 2.5rem;
+	--unit-12: 3rem;
+	--unit-16: 4rem;
+	--unit-20: 5rem;
+
+	/* --- АНИМАЦИИ --- */
+	--transition-duration-fast: 0.15s;
+	--transition-duration-main: 0.3s;
+	--transition-easing-ide: cubic-bezier(0.16, 1, 0.3, 1);
+
+	/*  Z-INDEX */
+	--z-index-base: 1;
+	--z-index-sticky: 100;
+	--z-index-sidebar: 200;
+	--z-index-overlay: 500;
+	--z-index-modal: 1000;
+
+	/* ПРОЗРАЧНОСТЬ */
+	--opacity-hover: 0.85;
+	--opacity-muted: 0.6;
+	--opacity-disabled: 0.35;
+}
+
+html.light-theme {
+	--color-bg-main: #fff;
+	--color-text-main: #000;
+	--color-bg-panel: #f5f5f5;
+	--color-bg-surface: #eee;
+	--color-text-muted: #757575;
+	--color-text-disabled: #bdbdbd;
+	--color-border: #000;
+	--color-success: #000;
+	--color-error: #000;
+}
+
+/* ШРИФТЫ */
+@font-face {
+	font-family: 'Geist Sans';
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+	src: url('/fonts/geist-sans/Geist-Regular.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Geist Sans';
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+	src: url('/fonts/geist-sans/Geist-Medium.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Geist Sans';
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+	src: url('/fonts/geist-sans/Geist-Bold.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Geist Mono';
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+	src: url('/fonts/geist-mono/GeistMono-Regular.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Geist Mono';
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+	src: url('/fonts/geist-mono/GeistMono-Medium.woff2') format('woff2');
+}
+
+/* ГЛОБАЛЬНЫЕ СТИЛИ И СБРОС */
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+	scroll-behavior: smooth;
+	scrollbar-gutter: stable;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	background-color: var(--color-bg-main);
+	font-family: var(--font-sans);
+	line-height: 1.5;
+	color: var(--color-text-main);
+	transition:
+		background-color var(--transition-duration-main) var(--transition-easing-ide),
+		color var(--transition-duration-main) var(--transition-easing-ide);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizelegibility;
+}
+
+.container {
+	width: 100%;
+	max-width: 1440px;
+	margin: 0 auto;
+	padding: 0 var(--unit-6);
+}
+
+app-root {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+}
+
+app-w-footer {
+	display: block;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+svg {
+	fill: currentcolor;
+}
+
+input,
+button,
+textarea,
+select {
+	background: transparent;
+	border: none;
+	color: inherit;
+	font: inherit;
+	outline: none;
+}
+
+button {
+	transition: opacity var(--transition-duration-fast) var(--transition-easing-ide);
+	cursor: pointer;
+	user-select: none;
+}
+
+button:hover {
+	opacity: var(--opacity-hover);
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+a {
+	display: inline-block;
+	color: inherit;
+	transition: opacity var(--transition-duration-fast) var(--transition-easing-ide);
+	text-decoration: none;
+}
+
+a:hover {
+	opacity: var(--opacity-hover);
+}

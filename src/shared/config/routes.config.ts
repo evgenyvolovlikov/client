@@ -1,30 +1,32 @@
 export const APP_ROUTES = {
-    /* Публичные */
-    LANDING: '',
-    DASHBOARD: 'dashboard',
-    TRACKS: 'tracks',
-    PROFILE: 'profile',
+	/* Публичные & Приватные */
+	LANDING: '',
+	DASHBOARD: 'dashboard',
+	TRACKS: 'tracks',
+	PROFILE: 'profile',
 
-    /* Глоссарий */
-    GLOSSARY: 'glossary',
-    GLOSSARY_CREATE: 'glossary/create',
-    GLOSSARY_DETAIL: 'glossary/:category/:id',
-    GLOSSARY_EDIT: 'glossary/:category/:id/edit',
+	/* Статьи */
+	ARTICLES: 'articles',
 
-    /* Авторизация  */
-    AUTH: 'auth',
-    LOGIN: 'login',
-    REGISTER: 'register',
+	/* Статья */
+	ARTICLE_CREATE: 'articles/create',
+	ARTICLE_DETAIL: 'articles/:category/:slug',
+	ARTICLE_EDIT: 'articles/:category/:slug/edit',
 
-    NOT_FOUND: '**',
+	/* Авторизация  */
+	AUTH: 'auth',
+	LOGIN: 'login',
+	REGISTER: 'register',
+
+	NOT_FOUND: '**',
 } as const;
 
 export const getRoute = {
-    glossaryDetail: (category: string, slug: string) =>
-        `/${APP_ROUTES.GLOSSARY}/${category}/${slug}`,
+	articleDetail: (category: string, slug: string): string =>
+		`/${APP_ROUTES.ARTICLES}/${category}/${slug}`,
 
-    glossaryEdit: (category: string, slug: string) =>
-        `/${APP_ROUTES.GLOSSARY}/${category}/${slug}/edit`,
+	articleEdit: (category: string, slug: string): string =>
+		`/${APP_ROUTES.ARTICLES}/${category}/${slug}/edit`,
 
-    glossaryCreate: () => `/${APP_ROUTES.GLOSSARY_CREATE}`,
+	articleCreate: (): string => `/${APP_ROUTES.ARTICLE_CREATE}`,
 };

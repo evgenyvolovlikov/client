@@ -16,9 +16,10 @@
         },
         "@schematics/angular:component": {
           "inlineTemplate": false,
-          "inlineStyle": true,
+          "inlineStyle": false,
           "style": "scss",
-          "changeDetection": "OnPush"
+          "changeDetection": "OnPush",
+          "standalone": true
         }
       },
       "root": "",
@@ -31,24 +32,30 @@
             "outputPath": {
               "base": "dist/ngalg"
             },
+
             "index": "src/index.html",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
+            "webWorkerTsConfig": "tsconfig.worker.json",
+
+            "scripts": [],
+
+            "prerender": false,
+            "ssr": false,
+
             "inlineStyleLanguage": "scss",
+            "styles": ["src/app/styles/index.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/app/styles"]
+            },
+
             "assets": [
               {
                 "glob": "**/*",
                 "input": "public",
                 "ignore": ["**/.DS_Store", "**/*.gitkeep"]
               }
-            ],
-            "styles": ["src/app/styles/index.scss"],
-            "stylePreprocessorOptions": {
-              "includePaths": ["src/app/styles"]
-            },
-            "scripts": [],
-            "prerender": false,
-            "ssr": false
+            ]
           },
           "configurations": {
             "production": {
@@ -56,8 +63,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "300kB",
+                  "maximumError": "500kB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kB",
+                  "maximumError": "4kB"
                 }
               ],
               "optimization": true,

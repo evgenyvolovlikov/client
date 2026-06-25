@@ -1,7 +1,7 @@
 # Искать настройки выше этого файла не нужно (корневой конфиг)
 root = true
 
-# Базовые настройки для всех файлов проекта
+# Базовые настройки для всех файлов проекта (TS, JS, Prisma)
 [*]
 charset = utf-8
 end_of_line = lf
@@ -9,18 +9,20 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 indent_style = tab
 indent_size = 4
+tab_width = 4
 
-# HTML и Angular шаблоны — пробелы, размер 2
-[*.{html,component.html}]
+# Шаблоны (Angular и обычный HTML), а также векторная графика
+[*.{html,svg}]
 indent_style = space
 indent_size = 2
 
-# JSON, Markdown, YAML — пробелы, размер 2
+# JSON, Markdown, configuration файлы
 [*.{json,md,yaml,yml}]
 indent_style = space
 indent_size = 2
 
-# Стили SCSS и CSS — ТАБЫ
+# Стили (SCSS, CSS) — строго таб
 [*.{scss,css}]
 indent_style = tab
 indent_size = 4
+tab_width = 4

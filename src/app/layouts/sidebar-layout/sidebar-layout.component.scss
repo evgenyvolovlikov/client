@@ -1,16 +1,17 @@
 .sidebar-layout {
-    display: flex;
-    width: 100%;
-    min-height: 100vh;
-}
+	display: flex;
+	width: 100%;
+	min-height: 100%;
+	background-color: var(--color-bg-main);
 
-.sidebar-layout__sidebar {
-    width: 16rem;
-    min-width: 16rem;
-    flex-shrink: 0;
-}
+	&__sidebar {
+		display: block;
+		flex-shrink: 0;
+	}
 
-.sidebar-layout__main {
-    min-width: 0;
-    flex-grow: 1;
+	&__main {
+		min-width: 0;
+		padding: var(--unit-6) var(--unit-8);
+		flex-grow: 1;
+	}
 }

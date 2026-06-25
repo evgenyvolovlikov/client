@@ -1,1 +1,2 @@
-export type {NavigationLink} from './navigation/types';
+export type * from './navigation/types';
+export type * from './theme/types';

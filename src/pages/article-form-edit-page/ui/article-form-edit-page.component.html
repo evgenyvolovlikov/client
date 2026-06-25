@@ -1,0 +1,234 @@
+<section class="article-form">
+  <header class="article-form__header">
+    <h1 class="article-form__title">
+      {{ isEditMode() ? 'Редактирование статьи' : 'Создание новой статьи' }}
+    </h1>
+    <p class="article-form__subtitle">
+      Заполните основные поля и добавьте динамические блоки содержания.
+    </p>
+  </header>
+
+  <form
+    class="form"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+  >
+    <fieldset class="form__fieldset">
+      <div class="form__field">
+        <label
+          class="form__label"
+          for="title"
+        >
+          Заголовок H1 (title)
+          <span class="form__required">*</span>
+        </label>
+        <input
+          class="form__input form__input--lg"
+          type="text"
+          id="title"
+          formControlName="title"
+          placeholder="Например: Бинарный поиск (Binary Search)"
+        />
+      </div>
+
+      <div class="form__row">
+        <div class="form__field">
+          <label
+            class="form__label"
+            for="slug"
+          >
+            Slug
+            <span class="form__required">*</span>
+          </label>
+          <input
+            class="form__input"
+            id="slug"
+            type="text"
+            formControlName="slug"
+            placeholder="Например: binary-search"
+          />
+        </div>
+        <div class="form__field">
+          <label
+            class="form__label"
+            for="category"
+          >
+            Раздел (category)
+            <span class="form__required">*</span>
+          </label>
+          <input
+            class="form__input"
+            id="category"
+            type="text"
+            formControlName="category"
+            placeholder="Например: Алгоритмы и структуры данных"
+          />
+        </div>
+      </div>
+
+      <div class="form__field">
+        <label
+          class="form__label"
+          for="leadText"
+        >
+          Вводный текст (leadText)
+          <span class="form__required">*</span>
+        </label>
+        <textarea
+          class="form__textarea"
+          id="leadText"
+          formControlName="leadText"
+          placeholder="Классический алгоритм поиска элемента..."
+          rows="3"
+        ></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset class="form__fieldset">
+      <div class="form__field">
+        <label
+          class="form__label"
+          for="noteText"
+        >
+          Примечание (noteText) — опционально
+        </label>
+        <textarea
+          class="form__textarea"
+          id="noteText"
+          formControlName="noteText"
+          placeholder="Важно: Алгоритм работает строго на отсортированных структурах."
+          rows="2"
+        ></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset class="form__fieldset form__fieldset--dynamic">
+      <legend class="form__legend">Характеристики и особенности</legend>
+
+      <div class="form__field">
+        <label
+          class="form__label"
+          for="sectionTitle"
+        >
+          Заголовок секции
+          <span class="form__required">*</span>
+        </label>
+        <input
+          class="form__input"
+          type="text"
+          id="sectionTitle"
+          formControlName="sectionTitle"
+          placeholder="Ключевые свойства алгоритма"
+        />
+      </div>
+
+      <div
+        class="form__list"
+        formArrayName="features"
+      >
+        @for (featureForm of featuresFormArray.controls; track $index) {
+          <div
+            class="form__list-item"
+            [formGroupName]="$index"
+          >
+            <input
+              class="form__input"
+              type="text"
+              formControlName="title"
+              placeholder="Свойство"
+            />
+            <input
+              class="form__input form__input--fluid"
+              type="text"
+              formControlName="text"
+              placeholder="Описание"
+            />
+            <button
+              type="button"
+              class="button button--icon button--danger"
+              (click)="removeFeature($index)"
+              aria-label="Удалить свойства"
+            >
+              ×
+            </button>
+          </div>
+        }
+      </div>
+
+      <button
+        class="button button--dashed"
+        type="button"
+        (click)="addFeature()"
+      >
+        + Добавить свойство / шаг
+      </button>
+    </fieldset>
+
+    <fieldset class="form__fieldset form__fieldset--dynamic">
+      <legend class="form__legend">Правое оглавление (TOC)</legend>
+
+      <div
+        class="form__list"
+        formArrayName="toc"
+      >
+        @for (tocForm of tocFormArray.controls; track $index) {
+          <div
+            class="form__list-item form__list-item--toc"
+            [formGroupName]="$index"
+          >
+            <input
+              class="form__input form__input--mono"
+              type="text"
+              formControlName="id"
+              placeholder="ID"
+            />
+            <input
+              class="form__input form__input--fluid"
+              type="text"
+              formControlName="label"
+              placeholder="Текст ссылки"
+            />
+            <input
+              class="form__input form__input--mono"
+              type="text"
+              formControlName="anchor"
+              placeholder="Якорь"
+            />
+            <button
+              type="button"
+              class="button button--icon button--danger"
+              (click)="removeTocElement($index)"
+              aria-label="Удалить пункт"
+            >
+              ×
+            </button>
+          </div>
+        }
+      </div>
+
+      <button
+        class="button button--dashed"
+        type="button"
+        (click)="addTocElement()"
+      >
+        + Добавить пункт оглавления
+      </button>
+    </fieldset>
+
+    <footer class="article-form__actions">
+      <a
+        class="button button--ghost"
+        routerLink="/articles"
+      >
+        Отмена
+      </a>
+      <button
+        class="button button--primary"
+        type="submit"
+        [disabled]="form.invalid"
+      >
+        {{ isEditMode() ? 'Сохранить изменения' : 'Создать статью' }}
+      </button>
+    </footer>
+  </form>
+</section>

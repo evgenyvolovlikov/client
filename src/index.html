@@ -2,15 +2,66 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>NgAlg</title>
+    <title>NgAlg | Алгоритмы и структуры данных</title>
     <base href="/" />
+
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1"
     />
+
+    <meta
+      name="description"
+      content="Платформа для изучения алгоритмов, подготовки к собеседованиям и практики на Angular"
+    />
+
+    <meta
+      name="theme-color"
+      content="#000000"
+    />
+
+    <link
+      rel="preload"
+      href="/fonts/geist-sans/Geist-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link
+      rel="preload"
+      href="/fonts/geist-sans/Geist-Medium.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link
+      rel="preload"
+      href="/fonts/geist-mono/GeistMono-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <script>
+      (function () {
+        try {
+          let savedTheme = localStorage.getItem('theme');
+          let prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+          if (savedTheme === 'light' || (!savedTheme && prefersLight)) {
+            document.documentElement.classList.add('light-theme');
+            document
+              .querySelector('meta[name="theme-color"]')
+              .setAttribute('content', '#ffffff');
+          }
+        } catch (e) {}
+      })();
+    </script>
+
     <link
       rel="icon"
-      href="data:image/svg+xml,<svg xmlns=%22http://w3.org viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚫</text></svg>"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚫</text></svg>"
     />
   </head>
   <body>

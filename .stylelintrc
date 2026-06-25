@@ -61,8 +61,8 @@
 				"emptyLineBeforeUnspecified": "never"
 			}
 		],
-		"declaration-no-important": null,
-		"max-nesting-depth": 3,
+		"declaration-no-important": true,
+		"max-nesting-depth": 2,
 		"color-named": "never",
 		"declaration-block-no-redundant-longhand-properties": true,
 		"no-empty-source": null,
@@ -77,7 +77,7 @@
 
 		"selector-class-pattern": "^[a-z0-9]+(-[a-z0-9]+)*(__[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z0-9]+(-[a-z0-9]+)*)?$",
 		"scss/selector-no-redundant-nesting-selector": null,
-
-		"scss/at-mixin-pattern": null
+		"scss/at-mixin-pattern": null,
+		"scss/at-if-no-null": null
 	}
 }

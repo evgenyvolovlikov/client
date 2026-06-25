@@ -1,0 +1,239 @@
+:host {
+	display: block;
+	width: 100%;
+}
+
+.article-form {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 2rem;
+
+	&__header {
+		margin-bottom: 2.5rem;
+		padding-bottom: 1.5rem;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	&__title {
+		margin: 0 0 0.5rem;
+		font-size: 2rem;
+		font-weight: 700;
+		line-height: 1.2;
+		color: var(--color-text-primary);
+	}
+
+	&__subtitle {
+		margin: 0;
+		font-size: 1rem;
+		color: var(--color-text-muted);
+	}
+
+	&__actions {
+		display: flex;
+		justify-content: flex-end;
+		margin-top: 3rem;
+		padding-top: 1.5rem;
+		gap: 1rem;
+		border-top: 1px solid var(--color-border);
+	}
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 2.5rem;
+
+	&__fieldset {
+		display: flex;
+		flex-direction: column;
+		margin: 0;
+		padding: 0;
+		border: none;
+		gap: 1.25rem;
+
+		&--dynamic {
+			padding: 1.5rem;
+			background: var(--color-bg-secondary);
+			border: 1px solid var(--color-border);
+			border-radius: 8px;
+		}
+	}
+
+	&__legend {
+		margin-bottom: 1rem;
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: var(--color-text-primary);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	&__row {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 1.25rem;
+	}
+
+	&__field {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	&__label {
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: var(--color-text-secondary);
+	}
+
+	&__required {
+		color: var(--color-error);
+	}
+
+	&__input,
+	&__textarea {
+		width: 100%;
+		padding: 0.75rem 1rem;
+		background: var(--color-bg-primary);
+		border: 1px solid var(--color-border);
+		border-radius: 6px;
+		font-family: inherit;
+		font-size: 0.875rem;
+		color: var(--color-text-primary);
+		transition:
+			border-color 0.2s ease,
+			box-shadow 0.2s ease;
+
+		&:focus {
+			box-shadow: 0 0 0 2px rgb(var(--color-primary-rgb), 0.2);
+			outline: none;
+			border-color: var(--color-primary);
+		}
+
+		&::placeholder {
+			opacity: 0.5;
+			color: var(--color-text-muted);
+		}
+
+		&.ng-invalid.ng-touched {
+			border-color: var(--color-error);
+		}
+
+		&--lg {
+			padding: 1rem;
+			font-size: 1.25rem;
+			font-weight: 600;
+		}
+
+		&--mono {
+			font-family: var(--font-mono);
+			font-size: 0.8125rem;
+		}
+	}
+
+	&__textarea {
+		min-height: 80px;
+		resize: vertical;
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	&__list-item {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+
+		.form__input--fluid {
+			flex-grow: 1;
+		}
+
+		&--toc {
+			display: grid;
+			grid-template-columns: 140px 1fr 160px auto;
+		}
+	}
+}
+
+.button {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	min-width: 140px;
+	padding: 0.75rem 1.5rem;
+	border: 1px solid transparent;
+	border-radius: 6px;
+	font-size: 0.875rem;
+	font-weight: 600;
+	transition: all 0.2s ease;
+	cursor: pointer;
+
+	&:disabled {
+		cursor: not-allowed;
+		pointer-events: none;
+	}
+
+	&--primary {
+		min-width: 180px;
+		background: #fff;
+		color: #000;
+
+		&:hover:not(:disabled) {
+			background: rgb(255 255 255 / 85%);
+		}
+
+		&:disabled {
+			background: var(--color-border);
+			opacity: 0.4;
+			color: var(--color-text-muted);
+		}
+	}
+
+	&--ghost {
+		background: transparent;
+		border: 1px solid var(--color-border);
+		color: var(--color-text-primary);
+
+		&:hover {
+			background: var(--color-bg-secondary);
+		}
+	}
+
+	&--dashed {
+		width: 100%;
+		padding: 1rem;
+		background: transparent;
+		border: 1px dashed var(--color-border);
+		color: var(--color-text-secondary);
+
+		&:hover {
+			color: var(--color-text-primary);
+			border-color: var(--color-text-primary);
+		}
+	}
+
+	&--icon {
+		width: 2.5rem;
+		min-width: 2.5rem;
+		height: 2.5rem;
+		padding: 0;
+		border-radius: 4px;
+		font-size: 1.25rem;
+		line-height: 1;
+	}
+
+	&--danger {
+		background: transparent;
+		border: 1px solid var(--color-border);
+		color: var(--color-text-muted);
+
+		&:hover {
+			background: var(--color-error);
+			color: #fff;
+			border-color: var(--color-error);
+		}
+	}
+}

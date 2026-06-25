@@ -1,14 +1,14 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 
-import {ThemeService} from '../model/theme.service';
+import {ThemeService} from '../model/services/theme.service';
 
 @Component({
-    selector: 'app-f-toggle-theme',
-    standalone: true,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: 'toggle-theme.component.html',
-    styleUrl: 'toggle-theme.component.scss',
+	selector: 'app-f-toggle-theme',
+	standalone: true,
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	templateUrl: 'toggle-theme.component.html',
+	styleUrl: 'toggle-theme.component.scss',
 })
 export class ToggleTheme {
-    protected readonly themeService = inject(ThemeService);
+	protected readonly themeService = inject(ThemeService);
 }

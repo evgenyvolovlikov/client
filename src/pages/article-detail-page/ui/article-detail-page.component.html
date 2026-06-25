@@ -1,0 +1,147 @@
+<section class="article-detail">
+  <div class="article-detail__content">
+    <!-- Хлебные крошки -->
+    <nav class="breadcrumbs">
+      <span class="breadcrumbs__item">База знаний</span>
+      <span class="breadcrumbs__divider">/</span>
+      <span class="breadcrumbs__item breadcrumbs__item--active">Angular Core & Reactivity</span>
+    </nav>
+
+    <!-- Теги -->
+    <article class="article">
+      @if (articleData.tags.length) {
+        <div class="article__tags">
+          @for (tag of articleData.tags; track tag) {
+            <span
+              class="tag-badge"
+              [class.tag-badge--theory]="tag === 'theory'"
+            >
+              {{ tag }}
+            </span>
+          }
+        </div>
+      }
+
+      <!-- Заголовок & Описание -->
+      <h1 class="article__title">{{ articleData.title }}</h1>
+      <p class="article__lead">{{ articleData.leadText }}</p>
+
+      <!-- Массив блоков -->
+      @for (block of articleData.blocks; track $index) {
+        @switch (block.type) {
+          @case ('text') {
+            <div
+              class="article__text-block"
+              [innerHTML]="block.data.content"
+            ></div>
+          }
+
+          @case ('complexity') {
+            <div class="article__complexity">
+              <div class="article__complexity-card">
+                <span class="article__complexity-label">Time Complexity</span>
+                <span class="article__complexity-value">{{ block.data.time }}</span>
+              </div>
+              <div class="article__complexity-card">
+                <span class="article__complexity-label">Space Complexity</span>
+                <span class="article__complexity-value">{{ block.data.space }}</span>
+              </div>
+              @if (block.data.description) {
+                <p class="article__complexity-desc">{{ block.data.description }}</p>
+              }
+            </div>
+          }
+
+          @case ('image') {
+            <figure class="article__image-wrapper">
+              <img
+                [src]="block.data.url"
+                [alt]="block.data.alt"
+                class="article__image"
+                [style.max-width]="block.data.width || '100%'"
+              />
+              @if (block.data.caption) {
+                <figcaption class="article__caption">{{ block.data.caption }}</figcaption>
+              }
+            </figure>
+          }
+
+          @case ('note') {
+            <blockquote
+              class="article__note"
+              [attr.data-note-type]="block.data.noteType"
+            >
+              <div class="article__note-icon">
+                {{ block.data.noteType === 'warning' ? '⚠️' : 'ℹ️' }}
+              </div>
+              <div class="article__note-text">{{ block.data.text }}</div>
+            </blockquote>
+          }
+
+          @case ('code') {
+            <div class="article__code-wrapper">
+              <div class="article__code-header">
+                <span class="article__code-lang">{{ block.data.language }}</span>
+                <div class="article__code-mac-dots">
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                </div>
+              </div>
+              <pre class="article__code"><code>{{ block.data.code }}</code></pre>
+            </div>
+          }
+
+          @case ('features') {
+            <div class="article__section">
+              <h2 class="article__section-title">{{ block.data.sectionTitle }}</h2>
+              <ul class="article__list">
+                @for (item of block.data.items; track item.title) {
+                  <li class="article__list-item">
+                    <strong class="article__list-keyword">{{ item.title }}:</strong>
+                    <span class="article__list-text">{{ item.text }}</span>
+                  </li>
+                }
+              </ul>
+            </div>
+          }
+        }
+      }
+    </article>
+
+    <!-- Кнопки (для админа или пользователя) -->
+    <div class="article-actions">
+      <a
+        [routerLink]="['/articles', 'a', 'b', 'edit']"
+        class="button button--edit"
+      >
+        Редактировать статью
+      </a>
+      <button
+        class="button button--delete"
+        (click)="onDelete()"
+      >
+        Удалить статью
+      </button>
+    </div>
+  </div>
+
+  <!-- Боковео меню (навигация по статье) -->
+  <aside class="article-detail__toc toc">
+    <div class="toc__title">На этой странице</div>
+    <ul class="toc__list">
+      @for (item of articleData.toc; track item.id; let first = $first) {
+        <li class="toc__item">
+          <a
+            [routerLink]="[]"
+            [fragment]="item.anchor"
+            class="toc__link"
+            [class.toc__link--active]="first"
+          >
+            {{ item.label }}
+          </a>
+        </li>
+      }
+    </ul>
+  </aside>
+</section>

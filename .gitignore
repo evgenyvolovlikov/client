@@ -1,23 +1,39 @@
+# --- Личные локальные папки (Удалить из корня при деплое) ---
 /Астрология
 /Саморазвитие
 /Манифест
 /План
 
-# --- Зависимости (Packages) ---
-node_modules/
+# --- Результаты сборки и компиляции ---
 /dist/
 /build/
+/out-tsc/
+/bazel-out/
+
+# --- Зависимости (Packages) ---
+node_modules/
+.pnpm-store/
 
 # --- Кэш и логи разработки ---
 .angular/
+*.log
+*.log*
 pnpm-debug.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-
-# --- Настройки VS Code (Локальные) ---
+# --- Настройки IDE и редакторов ---
 .vscode/*
 !.vscode/extensions.json
 !.vscode/launch.json
 !.vscode/snippets/
+.idea/
+*.suo
+*.ntvsca*
+*.njsproj
+*.sln
+*.sw?
 
 # --- Системные файлы операционных систем ---
 .DS_Store
@@ -33,11 +49,13 @@ Desktop.ini
 .env.test.local
 .env.production.local
 *.env
+!.env.example
 
 # --- Кэш тестов и отчеты ---
 /coverage/
 .nyc_output/
 .karma/
+.cypress/
 
 # --- Временные файлы (Temporary) ---
 tmp/
