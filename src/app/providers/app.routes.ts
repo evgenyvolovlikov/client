@@ -1,5 +1,6 @@
 import {type Route, Routes} from '@angular/router';
 
+import {AuthLayoutComponent} from '@app/layouts/auth-layout/auth-layout.component';
 import {PublicLayoutComponent} from '@app/layouts/public-layout/public-layout.component';
 import {SidebarLayoutComponent} from '@app/layouts/sidebar-layout/sidebar-layout.component';
 
@@ -7,6 +8,7 @@ import {APP_ROUTES} from '@shared/config';
 
 const authRoutes: Route = {
 	path: APP_ROUTES.AUTH,
+	component: AuthLayoutComponent,
 	children: [
 		{
 			path: APP_ROUTES.LOGIN,

@@ -44,21 +44,6 @@
       crossorigin
     />
 
-    <script>
-      (function () {
-        try {
-          let savedTheme = localStorage.getItem('theme');
-          let prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-          if (savedTheme === 'light' || (!savedTheme && prefersLight)) {
-            document.documentElement.classList.add('light-theme');
-            document
-              .querySelector('meta[name="theme-color"]')
-              .setAttribute('content', '#ffffff');
-          }
-        } catch (e) {}
-      })();
-    </script>
-
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚫</text></svg>"

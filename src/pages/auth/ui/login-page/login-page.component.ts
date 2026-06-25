@@ -1,12 +1,13 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {RouterLink} from '@angular/router';
+
+import {AuthByEmailComponent} from '@features/auth-by-email';
 
 @Component({
-    selector: 'app-p-login-page',
-    standalone: true,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: 'login-page.component.html',
-    styleUrl: 'login-page.component.scss',
-    imports: [RouterLink],
+	selector: 'app-p-login-page',
+	standalone: true,
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	templateUrl: 'login-page.component.html',
+	styleUrl: 'login-page.component.scss',
+	imports: [AuthByEmailComponent],
 })
 export class LoginPageComponent {}

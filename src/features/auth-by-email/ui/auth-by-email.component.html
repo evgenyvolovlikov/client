@@ -1,0 +1,137 @@
+<div class="auth-form">
+  <header class="auth-form__header">
+    <h2 class="auth-form__title">Вход в систему</h2>
+    <p class="auth-form__subtitle">Введите свои данные для доступа к платформе</p>
+  </header>
+
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    class="form"
+  >
+    @if (errorMessage()) {
+      <div
+        class="form__alert"
+        role="alert"
+        aria-live="assertive"
+      >
+        {{ errorMessage() }}
+      </div>
+    }
+
+    <div class="form__field">
+      <label
+        for="email"
+        class="form__label"
+      >
+        Электронная почта
+      </label>
+      <div class="form__input-wrapper">
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="name@example.com"
+          class="form__input"
+          [class.form__input--error]="
+            form.controls.email.touched && form.controls.email.invalid
+          "
+          [attr.aria-invalid]="
+            form.controls.email.touched && form.controls.email.invalid ? true : null
+          "
+          aria-describedby="email-error"
+          autocomplete="email"
+        />
+      </div>
+
+      <div
+        id="email-error"
+        aria-live="polite"
+      >
+        @if (form.controls.email.touched && form.controls.email.errors?.['required']) {
+          <span class="form__error">Поле обязательно для заполнения</span>
+        }
+        @if (form.controls.email.touched && form.controls.email.errors?.['email']) {
+          <span class="form__error">Введите корректный адрес почты</span>
+        }
+      </div>
+    </div>
+
+    <div class="form__field">
+      <div class="form__label-row">
+        <label
+          for="password"
+          class="form__label"
+        >
+          Пароль
+        </label>
+        <a
+          routerLink="/auth/forgot-password"
+          class="form__link-forgot"
+        >
+          Забыли пароль?
+        </a>
+      </div>
+      <div class="form__input-wrapper">
+        <input
+          id="password"
+          [type]="showPassword() ? 'text' : 'password'"
+          formControlName="password"
+          placeholder="••••••••"
+          class="form__input form__input--password"
+          [class.form__input--error]="
+            form.controls.password.touched && form.controls.password.invalid
+          "
+          [attr.aria-invalid]="
+            form.controls.password.touched && form.controls.password.invalid ? true : null
+          "
+          aria-describedby="password-error"
+          autocomplete="current-password"
+        />
+        <button
+          type="button"
+          class="form__password-toggle"
+          (click)="togglePasswordVisibility()"
+          [attr.aria-label]="showPassword() ? 'Скрыть пароль' : 'Показать пароль'"
+          [attr.aria-pressed]="showPassword()"
+        >
+          {{ showPassword() ? 'Скрыть' : 'Показать' }}
+        </button>
+      </div>
+
+      <div
+        id="password-error"
+        aria-live="polite"
+      >
+        @if (form.controls.password.touched && form.controls.password.errors?.['required']) {
+          <span class="form__error">Введите пароль</span>
+        }
+        @if (form.controls.password.touched && form.controls.password.errors?.['minlength']) {
+          <span class="form__error">Пароль не должен быть короче 6 символов</span>
+        }
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="button button--submit"
+      [disabled]="isLoading()"
+    >
+      @if (isLoading()) {
+        <span>Проверка данных...</span>
+      } @else {
+        <span>Войти с помощью Email</span>
+      }
+    </button>
+  </form>
+
+  <footer class="auth-form__footer">
+    <span>Еще нет аккаунта?</span>
+    <a
+      routerLink="/auth/register"
+      class="auth-form__link"
+    >
+      Зарегистрироваться
+    </a>
+  </footer>
+</div>
